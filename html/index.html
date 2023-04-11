@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" id="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ReadingTime</title>
+
+    <!-- <script type = "text/javascript" src= "javascipt/app.js"></script> -->
+</head>
+
+<script>
+    const api_url = "http://localhost:8080/api.readingtime/v1/getall"
+
+    async function get_all() {
+        const response = await fetch(api_url);
+        const data = await response.json();
+        const {title, body} = data;
+        console.log(data.title)
+    
+        document.getElementById('title').textContent = title;
+        document.getElementById('body').textContent = body;
+    }
+
+    get_all()
+
+</script>
+
+<body>
+    <h1>Reading Time</h1>
+    <h2>Title: <span id = "title"></span></h2>
+    <p><span id = "body"></span></p>
+</body>
+</html>
